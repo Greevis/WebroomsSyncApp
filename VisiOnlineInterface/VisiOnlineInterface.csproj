@@ -4,16 +4,15 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{996E2385-AED4-4805-8939-3A8F6184892C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{0764A632-5317-4674-B814-BD27CA4CACD3}</ProjectGuid>
+    <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WebroomsSyncApp</RootNamespace>
-    <AssemblyName>WebroomsSyncApp</AssemblyName>
+    <RootNamespace>VisiOnlineInterface</RootNamespace>
+    <AssemblyName>VisiOnlineInterface</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,7 +22,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -32,37 +30,43 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Resources">
+      <HintPath>..\..\..\Output2010\Resources.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Management" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.ServiceProcess" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WebroomsSyncAppInstaller.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebroomsSyncAppInstaller.Designer.cs">
-      <DependentUpon>WebroomsSyncAppInstaller.cs</DependentUpon>
-    </Compile>
-    <Compile Include="WebroomsSyncAppService.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="WebroomsSyncAppService.Designer.cs">
-      <DependentUpon>WebroomsSyncAppService.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="clsCard.cs" />
+    <Compile Include="clsGetCardsJson.cs" />
+    <Compile Include="clsKeyCreateJoinerJson.cs" />
+    <Compile Include="clsKeyCreateJson.cs" />
+    <Compile Include="clsKeyCreateJsonDoorOperations.cs" />
+    <Compile Include="clsAccessVisiOnline.cs" />
+    <Compile Include="clsCardResponse.cs" />
+    <Compile Include="clsCreateKeyResponse.cs" />
+    <Compile Include="clsDoorResponse.cs" />
+    <Compile Include="clsDoor.cs" />
+    <Compile Include="clsError.cs" />
+    <Compile Include="clsGetCardsResponse.cs" />
+    <Compile Include="clsGetDoorsResponse.cs" />
+    <Compile Include="clsInitialValues.cs" />
+    <Compile Include="clsKeyResponse.cs" />
+    <Compile Include="clsSessionJSON.cs" />
+    <Compile Include="clsSessionResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="WebroomsSyncAppInstaller.resx">
-      <DependentUpon>WebroomsSyncAppInstaller.cs</DependentUpon>
-    </EmbeddedResource>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

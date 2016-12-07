@@ -1,6 +1,6 @@
 ﻿namespace WebroomsSyncApp
 {
-    partial class Service1
+    partial class WebroomsSyncAppService
     {
         /// <summary> 
         /// Required designer variable.

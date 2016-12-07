@@ -9,9 +9,9 @@ using System.Text;
 
 namespace WebroomsSyncApp
 {
-    public partial class Service1 : ServiceBase
+    public partial class WebroomsSyncAppService : ServiceBase
     {
-        public Service1()
+        public WebroomsSyncAppService()
         {
             InitializeComponent();
         }

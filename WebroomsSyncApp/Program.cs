@@ -16,7 +16,7 @@ namespace WebroomsSyncApp
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
-                new Service1()
+                new WebroomsSyncAppService()
             };
             ServiceBase.Run(ServicesToRun);
         }

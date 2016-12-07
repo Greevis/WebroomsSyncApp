@@ -1,0 +1,1225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="https://Comms.Web-Rooms.co.nz/WebRoomsService/" xmlns:s1="https://Comms.Web-Rooms.co.nz/PmsNonOta/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="https://Comms.Web-Rooms.co.nz/WebRoomsService/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://Comms.Web-Rooms.co.nz/WebRoomsService/">
+      <s:import namespace="https://Comms.Web-Rooms.co.nz/PmsNonOta/" />
+      <s:import />
+      <s:element name="BookingRequest">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="EnqUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnqPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PropEnqUser" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PropEnqPass" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="PropEnqId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestFirstNames" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestLastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContactFirstNames" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContactLastName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestMobilePhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestAltPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ContactPhone" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestAddress" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestEmail" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestFax" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="GuestComments" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Rate" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="Deposit" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="CcName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CcExp" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="CcNum" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookTrial" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BookChannel" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BookEnqRoomTypeId" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstNight" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookNights" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookGuests" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookAd" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookCh" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookInRc" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="BookInNrc" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="BookEta" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="BookConfCode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookingRequestResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookingRequestResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="BookingRequestWithRoomNights">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="BookingRequestWithRoomNightsRequest" type="tns:WebRoomsBookings" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="WebRoomsBookings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ThirdPartyAuthentication" type="tns:WebRoomsBookingsThirdPartyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Booking" type="tns:WebRoomsBookingsBooking" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsThirdPartyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SoftwareVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsBooking">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BookingId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BookChannel" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="TotalRate" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Deposit" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SubmittedYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SubmittedMonth" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SubmittedDay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SubmittedHour" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SubmittedMinute" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="SubmittedSecond" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="GuestStayedBefore" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ETA" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FlightNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BookTrial" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ConfirmationCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Guest" type="tns:WebRoomsBookingsBookingGuest" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Contact" type="tns:WebRoomsBookingsBookingContact" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Agent" type="tns:WebRoomsBookingsBookingAgent" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CreditCard" type="tns:WebRoomsBookingsBookingCreditCard" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="RoomNight" type="tns:WebRoomsBookingsBookingRoomNight" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsBookingGuest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Salutation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstNames" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MobilePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AltPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsBookingContact">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Salutation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstNames" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MobilePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AltPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsBookingAgent">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Salutation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstNames" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MobilePhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AltPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PostCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsBookingCreditCard">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExpiryMonth" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExpiryYear" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Number" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="WebRoomsBookingsBookingRoomNight">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomTypeId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstDayYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstDayMonth" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstDayDay" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumDays" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="TotalCostPerNight" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BasePriceQuoted" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BasePriceMaxGuestsQuoted" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraAdultPriceQuoted" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraChildPriceQuoted" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraInfantRequiringCotPriceQuoted" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraInfantNotRequiringCotPriceQuoted" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BasePriceMaxBedsQuoted" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraBedPriceQuoted" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MinNightStayQuoted" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="InclusionsQuoted" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumAdults" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumChildren" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumInfantRequiringCot" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumInfantNotRequiringCot" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookingRequestWithRoomNightsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="s1:BookingRequestWithRoomNightsResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RWRCheckServer">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="credentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RWRCheckServerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="RWRCheckServerResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemoteInvites">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="credentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemoteInvitesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="GetRemoteInvitesResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="credentials" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRoomTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="GetRoomTypesResult" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetRoomTypes">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoomTypesRequest" type="tns:SetRoomTypesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SetRoomTypesRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyAuthentication" type="tns:SetRoomTypesRequestPropertyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ThirdPartyAuthentication" type="tns:SetRoomTypesRequestThirdPartyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="RoomType" type="tns:SetRoomTypesRequestRoomType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetRoomTypesRequestPropertyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyPassword" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetRoomTypesRequestThirdPartyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SoftwareVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetRoomTypesRequestRoomType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RoomTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumRooms" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="SetRoomTypesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetRoomTypesResult" type="ResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAvailabilities">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="AvailabilitiesRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="SetAvailabilitiesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SetAvailabilitiesResult" type="ResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcknowledgeBookings">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" ref="BookingsToAcknowledge" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AcknowledgeBookingsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="AcknowledgeBookingsResult" type="ResponseType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RateAmountNotifRQ">
+        <s:complexType />
+      </s:element>
+      <s:element name="RateAmountNotifRQResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RateAmountNotifRQResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InvCountNotifRQ">
+        <s:complexType />
+      </s:element>
+      <s:element name="InvCountNotifRQResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InvCountNotifRQResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FetchBookingsRQ">
+        <s:complexType />
+      </s:element>
+      <s:element name="FetchBookingsRQResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FetchBookingsRQResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string" />
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="https://Comms.Web-Rooms.co.nz/PmsNonOta/">
+      <s:element name="BookingRequestWithRoomNightsResult" type="s1:ThirdPartyResponse" />
+      <s:complexType name="ThirdPartyResponse">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+    <s:schema elementFormDefault="qualified">
+      <s:element name="credentials" type="RWRServerParamsRequest" />
+      <s:complexType name="RWRServerParamsRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyAuthentication" type="RWRServerParamsRequestPropertyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ThirdPartyAuthentication" type="RWRServerParamsRequestThirdPartyAuthentication" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RWRServerParamsRequestPropertyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyPassword" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="RWRServerParamsRequestThirdPartyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SoftwareVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="RWRCheckServerResult">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ResponseType">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Success" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Message" type="s:string" />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="CompleteAvailabilityRequired" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CompletePricingRequired" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CompleteStayRestrictionRequired" type="s:boolean" />
+            <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CompleteTextRequired" type="s:boolean" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LookAheadDays" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RefDayYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RefDayMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RefDayDay" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Booking">
+              <s:complexType>
+                <s:sequence>
+                  <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="BookingId" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BookChannel" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="TotalRate" type="s:decimal" />
+                  <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Deposit" type="s:decimal" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SubmittedYear" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SubmittedMonth" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SubmittedDay" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SubmittedHour" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SubmittedMinute" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SubmittedSecond" type="s:int" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="GuestStayedBefore" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ETA" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FlightNumber" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BookTrial" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ConfirmationCode" type="s:string" />
+                  <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="IsTentative" type="s:boolean" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="HowWebsiteFound" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PaymentMethod" type="s:string" />
+                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="CustomQuestion">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Question" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Answer" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Guest">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Salutation" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstNames" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Company" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MobilePhone" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AltPhone" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="City" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PostCode" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Country" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Email" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Fax" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Contact">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Salutation" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstNames" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Company" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MobilePhone" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AltPhone" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="City" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PostCode" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Country" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Email" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Fax" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Agent">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Salutation" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="FirstNames" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="LastName" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Company" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MobilePhone" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="AltPhone" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Address" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="City" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="State" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PostCode" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Country" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Email" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Fax" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Comments" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CreditCard">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Name" type="s:string" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExpiryMonth" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExpiryYear" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Number" type="s:string" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                  <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="RoomNight">
+                    <s:complexType>
+                      <s:sequence>
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RoomId" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomName" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstDayYear" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstDayMonth" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="FirstDayDay" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastDayYear" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastDayMonth" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastDayDay" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="TotalCostPerNight" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BasePriceQuoted" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BasePriceMaxGuestsQuoted" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraAdultPriceQuoted" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraChildPriceQuoted" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraInfantRequiringCotPriceQuoted" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraInfantNotRequiringCotPriceQuoted" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="BasePriceMaxBedsQuoted" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ExtraBedPriceQuoted" type="s:decimal" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="MinNightStayQuoted" type="s:int" />
+                        <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="InclusionsQuoted" type="s:string" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumAdults" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumChildren" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumInfantRequiringCot" type="s:int" />
+                        <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumInfantNotRequiringCot" type="s:int" />
+                      </s:sequence>
+                    </s:complexType>
+                  </s:element>
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRoomTypeChangeYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRoomTypeChangeMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRoomTypeChangeDay" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRoomTypeChangeHour" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRoomTypeChangeMinute" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRoomTypeChangeSecond" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRemoteInviteChangeYear" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRemoteInviteChangeMonth" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRemoteInviteChangeDay" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRemoteInviteChangeHour" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRemoteInviteChangeMinute" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="LastRemoteInviteChangeSecond" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetRemoteInvitesResult" type="GetRemoteInvitesResponse" />
+      <s:complexType name="GetRemoteInvitesResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ResponseType" type="GetRemoteInvitesResponseResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="RemoteInvite" type="GetRemoteInvitesResponseRemoteInvite" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetRemoteInvitesResponseResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetRemoteInvitesResponseRemoteInvite">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RemoteInviteName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RemoteInviteUrl" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetRoomTypesResult" type="GetRoomTypesResponse" />
+      <s:complexType name="GetRoomTypesResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ResponseType" type="GetRoomTypesResponseResponseType" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="RoomType" type="GetRoomTypesResponseRoomType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetRoomTypesResponseResponseType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="Success" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="Message" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="GetRoomTypesResponseRoomType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RoomTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomTypeName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="NumRooms" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ResponseType">
+        <s:attribute name="Success" type="s:boolean" use="required" />
+        <s:attribute name="Message" type="s:string" />
+      </s:complexType>
+      <s:element name="AvailabilitiesRequest" type="SetAvailabilityRequest" />
+      <s:complexType name="SetAvailabilityRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyAuthentication" type="SetAvailabilityRequestPropertyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ThirdPartyAuthentication" type="SetAvailabilityRequestThirdPartyAuthentication" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RefDayYear" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RefDayMonth" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RefDayDay" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="CompleteAvailabilitySent" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="RoomType" type="SetAvailabilityRequestRoomType" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetAvailabilityRequestPropertyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyPassword" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetAvailabilityRequestThirdPartyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SoftwareVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetAvailabilityRequestRoomType">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="RoomTypeId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Availabilities" type="SetAvailabilityRequestRoomTypeAvailabilities" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="NumberOfRooms" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="SetAvailabilityRequestRoomTypeAvailabilities">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="StartDayOffset" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EndDayOffset" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomsAvailable" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomsUnbookable" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="RoomsUnconfirmable" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="BookingsToAcknowledge" type="AcknowledgeBookings" />
+      <s:complexType name="AcknowledgeBookings">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyAuthentication" type="AcknowledgeBookingsPropertyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="ThirdPartyAuthentication" type="AcknowledgeBookingsThirdPartyAuthentication" />
+          <s:element minOccurs="0" maxOccurs="unbounded" form="unqualified" name="Booking" type="AcknowledgeBookingsBooking" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AcknowledgeBookingsPropertyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="PropertyPassword" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AcknowledgeBookingsThirdPartyAuthentication">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="EnqPass" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" form="unqualified" name="SoftwareVersion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="AcknowledgeBookingsBooking">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" form="unqualified" name="BookingId" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="BookingRequestSoapIn">
+    <wsdl:part name="parameters" element="tns:BookingRequest" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestSoapOut">
+    <wsdl:part name="parameters" element="tns:BookingRequestResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestWithRoomNightsSoapIn">
+    <wsdl:part name="parameters" element="tns:BookingRequestWithRoomNights" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestWithRoomNightsSoapOut">
+    <wsdl:part name="parameters" element="tns:BookingRequestWithRoomNightsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RWRCheckServerSoapIn">
+    <wsdl:part name="parameters" element="tns:RWRCheckServer" />
+  </wsdl:message>
+  <wsdl:message name="RWRCheckServerSoapOut">
+    <wsdl:part name="parameters" element="tns:RWRCheckServerResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRemoteInvitesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRemoteInvites" />
+  </wsdl:message>
+  <wsdl:message name="GetRemoteInvitesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRemoteInvitesResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetRoomTypes" />
+  </wsdl:message>
+  <wsdl:message name="GetRoomTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetRoomTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetRoomTypesSoapIn">
+    <wsdl:part name="parameters" element="tns:SetRoomTypes" />
+  </wsdl:message>
+  <wsdl:message name="SetRoomTypesSoapOut">
+    <wsdl:part name="parameters" element="tns:SetRoomTypesResponse" />
+  </wsdl:message>
+  <wsdl:message name="SetAvailabilitiesSoapIn">
+    <wsdl:part name="parameters" element="tns:SetAvailabilities" />
+  </wsdl:message>
+  <wsdl:message name="SetAvailabilitiesSoapOut">
+    <wsdl:part name="parameters" element="tns:SetAvailabilitiesResponse" />
+  </wsdl:message>
+  <wsdl:message name="AcknowledgeBookingsSoapIn">
+    <wsdl:part name="parameters" element="tns:AcknowledgeBookings" />
+  </wsdl:message>
+  <wsdl:message name="AcknowledgeBookingsSoapOut">
+    <wsdl:part name="parameters" element="tns:AcknowledgeBookingsResponse" />
+  </wsdl:message>
+  <wsdl:message name="RateAmountNotifRQSoapIn">
+    <wsdl:part name="parameters" element="tns:RateAmountNotifRQ" />
+  </wsdl:message>
+  <wsdl:message name="RateAmountNotifRQSoapOut">
+    <wsdl:part name="parameters" element="tns:RateAmountNotifRQResponse" />
+  </wsdl:message>
+  <wsdl:message name="InvCountNotifRQSoapIn">
+    <wsdl:part name="parameters" element="tns:InvCountNotifRQ" />
+  </wsdl:message>
+  <wsdl:message name="InvCountNotifRQSoapOut">
+    <wsdl:part name="parameters" element="tns:InvCountNotifRQResponse" />
+  </wsdl:message>
+  <wsdl:message name="FetchBookingsRQSoapIn">
+    <wsdl:part name="parameters" element="tns:FetchBookingsRQ" />
+  </wsdl:message>
+  <wsdl:message name="FetchBookingsRQSoapOut">
+    <wsdl:part name="parameters" element="tns:FetchBookingsRQResponse" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestHttpGetIn">
+    <wsdl:part name="EnqUser" type="s:string" />
+    <wsdl:part name="EnqPass" type="s:string" />
+    <wsdl:part name="PropEnqUser" type="s:string" />
+    <wsdl:part name="PropEnqPass" type="s:string" />
+    <wsdl:part name="PropEnqId" type="s:string" />
+    <wsdl:part name="GuestFirstNames" type="s:string" />
+    <wsdl:part name="GuestLastName" type="s:string" />
+    <wsdl:part name="ContactFirstNames" type="s:string" />
+    <wsdl:part name="ContactLastName" type="s:string" />
+    <wsdl:part name="GuestMobilePhone" type="s:string" />
+    <wsdl:part name="GuestAltPhone" type="s:string" />
+    <wsdl:part name="ContactPhone" type="s:string" />
+    <wsdl:part name="GuestAddress" type="s:string" />
+    <wsdl:part name="GuestEmail" type="s:string" />
+    <wsdl:part name="GuestFax" type="s:string" />
+    <wsdl:part name="GuestComments" type="s:string" />
+    <wsdl:part name="Rate" type="s:string" />
+    <wsdl:part name="Deposit" type="s:string" />
+    <wsdl:part name="CcName" type="s:string" />
+    <wsdl:part name="CcExp" type="s:string" />
+    <wsdl:part name="CcNum" type="s:string" />
+    <wsdl:part name="BookTrial" type="s:string" />
+    <wsdl:part name="BookChannel" type="s:string" />
+    <wsdl:part name="BookEnqRoomTypeId" type="s:string" />
+    <wsdl:part name="FirstNight" type="s:string" />
+    <wsdl:part name="BookNights" type="s:string" />
+    <wsdl:part name="BookGuests" type="s:string" />
+    <wsdl:part name="BookAd" type="s:string" />
+    <wsdl:part name="BookCh" type="s:string" />
+    <wsdl:part name="BookInRc" type="s:string" />
+    <wsdl:part name="BookInNrc" type="s:string" />
+    <wsdl:part name="BookEta" type="s:string" />
+    <wsdl:part name="BookConfCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestHttpGetOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RateAmountNotifRQHttpGetIn" />
+  <wsdl:message name="RateAmountNotifRQHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="InvCountNotifRQHttpGetIn" />
+  <wsdl:message name="InvCountNotifRQHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="FetchBookingsRQHttpGetIn" />
+  <wsdl:message name="FetchBookingsRQHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestHttpPostIn">
+    <wsdl:part name="EnqUser" type="s:string" />
+    <wsdl:part name="EnqPass" type="s:string" />
+    <wsdl:part name="PropEnqUser" type="s:string" />
+    <wsdl:part name="PropEnqPass" type="s:string" />
+    <wsdl:part name="PropEnqId" type="s:string" />
+    <wsdl:part name="GuestFirstNames" type="s:string" />
+    <wsdl:part name="GuestLastName" type="s:string" />
+    <wsdl:part name="ContactFirstNames" type="s:string" />
+    <wsdl:part name="ContactLastName" type="s:string" />
+    <wsdl:part name="GuestMobilePhone" type="s:string" />
+    <wsdl:part name="GuestAltPhone" type="s:string" />
+    <wsdl:part name="ContactPhone" type="s:string" />
+    <wsdl:part name="GuestAddress" type="s:string" />
+    <wsdl:part name="GuestEmail" type="s:string" />
+    <wsdl:part name="GuestFax" type="s:string" />
+    <wsdl:part name="GuestComments" type="s:string" />
+    <wsdl:part name="Rate" type="s:string" />
+    <wsdl:part name="Deposit" type="s:string" />
+    <wsdl:part name="CcName" type="s:string" />
+    <wsdl:part name="CcExp" type="s:string" />
+    <wsdl:part name="CcNum" type="s:string" />
+    <wsdl:part name="BookTrial" type="s:string" />
+    <wsdl:part name="BookChannel" type="s:string" />
+    <wsdl:part name="BookEnqRoomTypeId" type="s:string" />
+    <wsdl:part name="FirstNight" type="s:string" />
+    <wsdl:part name="BookNights" type="s:string" />
+    <wsdl:part name="BookGuests" type="s:string" />
+    <wsdl:part name="BookAd" type="s:string" />
+    <wsdl:part name="BookCh" type="s:string" />
+    <wsdl:part name="BookInRc" type="s:string" />
+    <wsdl:part name="BookInNrc" type="s:string" />
+    <wsdl:part name="BookEta" type="s:string" />
+    <wsdl:part name="BookConfCode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="BookingRequestHttpPostOut">
+    <wsdl:part name="Body" element="tns:string" />
+  </wsdl:message>
+  <wsdl:message name="RateAmountNotifRQHttpPostIn" />
+  <wsdl:message name="RateAmountNotifRQHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="InvCountNotifRQHttpPostIn" />
+  <wsdl:message name="InvCountNotifRQHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="FetchBookingsRQHttpPostIn" />
+  <wsdl:message name="FetchBookingsRQHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:portType name="WebRoomsServiceSoap">
+    <wsdl:operation name="BookingRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow 3rd Party retail channels to send Bookings.</wsdl:documentation>
+      <wsdl:input message="tns:BookingRequestSoapIn" />
+      <wsdl:output message="tns:BookingRequestSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="BookingRequestWithRoomNights">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow Channels and Channel Managers to upload bookings to Webrooms.</wsdl:documentation>
+      <wsdl:input message="tns:BookingRequestWithRoomNightsSoapIn" />
+      <wsdl:output message="tns:BookingRequestWithRoomNightsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RWRCheckServer">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow PMSes to check for bookings and changes from Webrooms.</wsdl:documentation>
+      <wsdl:input message="tns:RWRCheckServerSoapIn" />
+      <wsdl:output message="tns:RWRCheckServerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRemoteInvites">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow PMSes to get remote invite URLs for Webrooms People.</wsdl:documentation>
+      <wsdl:input message="tns:GetRemoteInvitesSoapIn" />
+      <wsdl:output message="tns:GetRemoteInvitesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow PMSes Webrooms Room Types.</wsdl:documentation>
+      <wsdl:input message="tns:GetRoomTypesSoapIn" />
+      <wsdl:output message="tns:GetRoomTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetRoomTypes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow PMSes to set Webrooms Room Types.</wsdl:documentation>
+      <wsdl:input message="tns:SetRoomTypesSoapIn" />
+      <wsdl:output message="tns:SetRoomTypesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="SetAvailabilities">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow PMSes to set Webrooms Availability.</wsdl:documentation>
+      <wsdl:input message="tns:SetAvailabilitiesSoapIn" />
+      <wsdl:output message="tns:SetAvailabilitiesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgeBookings">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow PMSes to set Acknowledge recipet of bookings from Webrooms.</wsdl:documentation>
+      <wsdl:input message="tns:AcknowledgeBookingsSoapIn" />
+      <wsdl:output message="tns:AcknowledgeBookingsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA RateAmountNotifRQ Method, for PMSes to upload Rates.</wsdl:documentation>
+      <wsdl:input message="tns:RateAmountNotifRQSoapIn" />
+      <wsdl:output message="tns:RateAmountNotifRQSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA InvCountNotifRQ Method, for PMSes to upload Availability.</wsdl:documentation>
+      <wsdl:input message="tns:InvCountNotifRQSoapIn" />
+      <wsdl:output message="tns:InvCountNotifRQSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA FetchBookingsRQ Method, for PMSes Bookings.</wsdl:documentation>
+      <wsdl:input message="tns:FetchBookingsRQSoapIn" />
+      <wsdl:output message="tns:FetchBookingsRQSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebRoomsServiceHttpGet">
+    <wsdl:operation name="BookingRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow 3rd Party retail channels to send Bookings.</wsdl:documentation>
+      <wsdl:input message="tns:BookingRequestHttpGetIn" />
+      <wsdl:output message="tns:BookingRequestHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA RateAmountNotifRQ Method, for PMSes to upload Rates.</wsdl:documentation>
+      <wsdl:input message="tns:RateAmountNotifRQHttpGetIn" />
+      <wsdl:output message="tns:RateAmountNotifRQHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA InvCountNotifRQ Method, for PMSes to upload Availability.</wsdl:documentation>
+      <wsdl:input message="tns:InvCountNotifRQHttpGetIn" />
+      <wsdl:output message="tns:InvCountNotifRQHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA FetchBookingsRQ Method, for PMSes Bookings.</wsdl:documentation>
+      <wsdl:input message="tns:FetchBookingsRQHttpGetIn" />
+      <wsdl:output message="tns:FetchBookingsRQHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="WebRoomsServiceHttpPost">
+    <wsdl:operation name="BookingRequest">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Proprietary method to allow 3rd Party retail channels to send Bookings.</wsdl:documentation>
+      <wsdl:input message="tns:BookingRequestHttpPostIn" />
+      <wsdl:output message="tns:BookingRequestHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA RateAmountNotifRQ Method, for PMSes to upload Rates.</wsdl:documentation>
+      <wsdl:input message="tns:RateAmountNotifRQHttpPostIn" />
+      <wsdl:output message="tns:RateAmountNotifRQHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA InvCountNotifRQ Method, for PMSes to upload Availability.</wsdl:documentation>
+      <wsdl:input message="tns:InvCountNotifRQHttpPostIn" />
+      <wsdl:output message="tns:InvCountNotifRQHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">OTA FetchBookingsRQ Method, for PMSes Bookings.</wsdl:documentation>
+      <wsdl:input message="tns:FetchBookingsRQHttpPostIn" />
+      <wsdl:output message="tns:FetchBookingsRQHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebRoomsServiceSoap" type="tns:WebRoomsServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BookingRequest">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/BookingRequest" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookingRequestWithRoomNights">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/BookingRequestWithRoomNights" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RWRCheckServer">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/RWRCheckServer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemoteInvites">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/GetRemoteInvites" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomTypes">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/GetRoomTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRoomTypes">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/SetRoomTypes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAvailabilities">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/SetAvailabilities" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgeBookings">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/AcknowledgeBookings" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/RateAmountNotifRQ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/InvCountNotifRQ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <soap:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/FetchBookingsRQ" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebRoomsServiceSoap12" type="tns:WebRoomsServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="BookingRequest">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/BookingRequest" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="BookingRequestWithRoomNights">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/BookingRequestWithRoomNights" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RWRCheckServer">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/RWRCheckServer" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRemoteInvites">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/GetRemoteInvites" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRoomTypes">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/GetRoomTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetRoomTypes">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/SetRoomTypes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SetAvailabilities">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/SetAvailabilities" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AcknowledgeBookings">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/AcknowledgeBookings" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/RateAmountNotifRQ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/InvCountNotifRQ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <soap12:operation soapAction="https://Comms.Web-Rooms.co.nz/WebRoomsService/FetchBookingsRQ" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebRoomsServiceHttpGet" type="tns:WebRoomsServiceHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="BookingRequest">
+      <http:operation location="/BookingRequest" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <http:operation location="/RateAmountNotifRQ" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <http:operation location="/InvCountNotifRQ" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <http:operation location="/FetchBookingsRQ" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebRoomsServiceHttpPost" type="tns:WebRoomsServiceHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="BookingRequest">
+      <http:operation location="/BookingRequest" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RateAmountNotifRQ">
+      <http:operation location="/RateAmountNotifRQ" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InvCountNotifRQ">
+      <http:operation location="/InvCountNotifRQ" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FetchBookingsRQ">
+      <http:operation location="/FetchBookingsRQ" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebRoomsService">
+    <wsdl:port name="WebRoomsServiceSoap" binding="tns:WebRoomsServiceSoap">
+      <soap:address location="http://ws.web-rooms.co.nz:8181/rhswebrooms/webroomsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebRoomsServiceSoap12" binding="tns:WebRoomsServiceSoap12">
+      <soap12:address location="http://ws.web-rooms.co.nz:8181/rhswebrooms/webroomsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebRoomsServiceHttpGet" binding="tns:WebRoomsServiceHttpGet">
+      <http:address location="http://ws.web-rooms.co.nz:8181/rhswebrooms/webroomsservice.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebRoomsServiceHttpPost" binding="tns:WebRoomsServiceHttpPost">
+      <http:address location="http://ws.web-rooms.co.nz:8181/rhswebrooms/webroomsservice.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
